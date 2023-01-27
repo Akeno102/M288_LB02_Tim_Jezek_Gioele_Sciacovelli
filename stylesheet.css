@@ -8,9 +8,8 @@ body {
     padding: 30px;
     background-color: #fff;
     box-shadow: 0 0 10px #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 120px;
+    border-radius: 12px;
 }
 
 
@@ -40,6 +39,17 @@ input[type="text"], input[type="password"] {
     text-align: right;
 }
 
+.weak-password{
+    color: red;
+}
+
+.medium-password{
+    color: orange;
+}
+
+.strong-password{
+    color: green;
+}
 
 
 
