@@ -1,50 +1,57 @@
-const form = document.querySelector("form")
-eField = form.querySelector(".email"),
-    eInput = eField.querySelector("input"),
-    pField = form.querySelector(".password"),
-    pInput = pField.querySelector("input");
+function checkPassword(event) {
+  fetch("login.json") // Stellt Verbindung zu JSON File her
+      .then(response => response.json()) // Antwort wird empfangen und als JSON weitergegeben
+      .then(data => {
+        const correctEmail = data.email; // Die Email und Passwort aus dem JSON File werden ausgelesen und Konstanten zugewiesen
+        const correctPw = data.password;
 
+        const email = document.getElementById("email").value; // Das Eingegebene Login wird ausgelesen und als Konstanten definiert
+        const password = document.getElementById("password").value;
 
-form.onsubmit = (e)=>{
-  e.preventDefault(); //preventing from form submitting
-  //if email and password is blank then add shake class in it else call specified function
-  (eInput.value == "") ? eField.classList.add("shake", "error") : checkEmail();
-  (pInput.value == "") ? pField.classList.add("shake", "error") : checkPass();
+        if (email === correctEmail && password === correctPw) {
+          window.location.href="LoginDone.html"//Wenn Email und Passwort aus dem JSON File mit denen aus dem Login übereinstimmen wird man weitergeleitet
+        }else{
+          alert("Falsches Login") //Eine Fehlermeldung erscheint wenn Das Login nicht übereinstimmt
+        }
+      })
+      .catch(error => {
+        console.log("Error loading login " + error); // Bei Ladefehlern wird in der Konsole der Errorcode ausgegeben
+      });
+  event.preventDefault(); // Verhindert das abschicken des Formulars
+}
 
-
-
-  eInput.onkeyup = ()=>{checkEmail();} //calling checkEmail function on email input keyup
-  pInput.onkeyup = ()=>{checkPass();} //calling checkPassword function on pass input keyup
-
-
-  function checkEmail(){ //checkEmail function
-    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //pattern for validate email
-    if(!eInput.value.match(pattern)){ //if pattern not matched then add error and remove valid class
-      eField.classList.add("error");
-      eField.classList.remove("valid");
-      let errorTxt = eField.querySelector(".error-txt");
-      //if email value is not empty then show please enter valid email else show Email can't be blank
-      (eInput.value != "") ? errorTxt.innerText = "Enter a valid email address" : errorTxt.innerText = "Email can't be blank";
-    }else{ //if pattern matched then remove error and add valid class
-      eField.classList.remove("error");
-      eField.classList.add("valid");
+$(document).ready(function () {
+  $("#password").on('keyup', function(){
+    var number = /([0-9])/;
+    var alphabets = /([a-zA-Z])/;
+    var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+    if ($('#password').val().length < 6) {
+      $('#password-strength-status').removeClass();
+      $('#password-strength-status').addClass('weak-password');
+      $('#password-strength-status').html("Weak (should be atleast 6 characters.)");
+    } else {
+      if ($('#password').val().match(number) && $('#password').val().match(alphabets) && $('#password').val().match(special_characters)) {
+        $('#password-strength-status').removeClass();
+        $('#password-strength-status').addClass('strong-password');
+        $('#password-strength-status').html("Strong");
+      } else {
+        $('#password-strength-status').removeClass();
+        $('#password-strength-status').addClass('medium-password');
+        $('#password-strength-status').html("Medium (should include alphabets, numbers and special characters or some combination.)");
+      }
     }
-  }
+  });
+});
+document.querySelector('#email').addEventListener('input', validateForm);
+document.querySelector('#password').addEventListener('input', validateForm);
 
+function validateForm() {
+    var email = document.querySelector('#email').value;
+    var password = document.querySelector('#password').value;
 
-  function checkPass(){ //checkPass function
-    if(pInput.value == ""){ //if pass is empty then add error and remove valid class
-      pField.classList.add("error");
-      pField.classList.remove("valid");
-    }else{ //if pass is empty then remove error and add valid class
-      pField.classList.remove("error");
-      pField.classList.add("valid");
+    if (email.includes("@") && password.length > 0) {
+        document.querySelector('#submit').disabled = false;
+    } else {
+        document.querySelector('#submit').disabled = true;
     }
-  }
-
-
-  //if eField and pField doesn't contains error class that mean user filled details properly
-  if(!eField.classList.contains("error") && !pField.classList.contains("error")){
-    window.location.href = form.getAttribute("action"); //redirecting user to the specified url which is inside action attribute of form tag
-  }
-};
+}
