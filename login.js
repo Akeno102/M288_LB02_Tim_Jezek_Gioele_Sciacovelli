@@ -33,7 +33,7 @@ $(document).ready(function () {
       if ($('#password').val().match(number) && $('#password').val().match(alphabets) && $('#password').val().match(special_characters)) {
         $('#password-strength-status').removeClass();
         $('#password-strength-status').addClass('strong-password');
-        $('#password-strength-status').html("Strong");
+        $('#password-strength-status').html("Strong Password (Well done)");
       } else {
         $('#password-strength-status').removeClass();
         $('#password-strength-status').addClass('medium-password');
