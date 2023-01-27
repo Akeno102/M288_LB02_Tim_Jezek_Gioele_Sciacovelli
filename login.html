@@ -1,28 +1,26 @@
+<html lang="en">
+
 <head>
-  <link rel="stylesheet" href="stylesheet.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
 </head>
+
 <body>
-<div class="container">
-  <div class="wrapper">
-    <div class="title"><span>Login Form</span></div>
-    <form action="#">
-      <div class="row">
-        <i class="fas fa-user"></i>
-        <input type="text" placeholder="Email or Phone" required>
-      </div>
-      <div class="row">
-        <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" id="password" required>
-        <div class="error-message" id="password-error"></div>
-      </div>
-      <div class="pass"><a href="#">Forgot password?</a></div>
-      <div class="row button">
-        <input type="submit" value="Login" onclick="validatePassword()">
-      </div>
-      <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
-    </form>
+<form class='formContainer' onSubmit="handleSubmit()">
+  <label for='user'>Username</label>
+  <input class='field' type='text' name='user' id='user'>
+  <label for='user'>Password</label>
+  <input class='field' type='password' name='pwd' id='pwd'>
+  <div id='errContainer'>
+    <p class='invalid' id='uppercase'>1+ uppercase</p>
+    <p class='invalid' id='lowercase'>1+ lowercase</p>
+    <p class='invalid' id='numbers'>1+ number</p>
+    <p class='invalid' id='length'>8+ Length</p>
   </div>
-</div>
+  <button disabled class='btn'>login</button>
+</form>
 </body>
 
+</html>
