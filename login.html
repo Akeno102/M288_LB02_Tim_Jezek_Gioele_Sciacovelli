@@ -1,26 +1,42 @@
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
-
 <body>
-<form class='formContainer' onSubmit="handleSubmit()">
-  <label for='user'>Username</label>
-  <input class='field' type='text' name='user' id='user'>
-  <label for='user'>Password</label>
-  <input class='field' type='password' name='pwd' id='pwd'>
-  <div id='errContainer'>
-    <p class='invalid' id='uppercase'>1+ uppercase</p>
-    <p class='invalid' id='lowercase'>1+ lowercase</p>
-    <p class='invalid' id='numbers'>1+ number</p>
-    <p class='invalid' id='length'>8+ Length</p>
-  </div>
-  <button disabled class='btn'>login</button>
-</form>
-</body>
 
+<form action="/action_page.php">
+  <div class="container">
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <hr>
+    <div id="message">
+      <h3>Password must contain the following:</h3>
+      <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+      <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+      <p id="number" class="invalid">A <b>number</b></p>
+      <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div>
+
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+
+  <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
+</form>
+
+</body>
 </html>

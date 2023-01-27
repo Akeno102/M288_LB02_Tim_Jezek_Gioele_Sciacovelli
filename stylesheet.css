@@ -1,89 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
-* {
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  font-size: 10px;
-  font-family: "ubuntu";
-}
-
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
   width: 100%;
-  height: 100vh;
-}
-
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2rem;
-  width: 30rem;
-  height: auto;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  font-size: 1.4rem;
-  border-radius: 10px;
-  box-shadow: 1px 5px 16px 5px rgba(0,0,0,0.42);
-}
-
-#errContainer {
-  display: none;
-}
-
-.btn {
-  position: relative;
-  background-color: #121212;
-  color: #ffffff;
-  padding: 1rem 2rem;
-  height: auto;
-  width: auto;
-  border-radius: .5rem;
-  font-size: 1.6rem;
-  font-family: 'ubuntu';
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
   border: none;
-  z-index: 1;
+  background: #f1f1f1;
 }
 
-.btn:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  background-color: #663dff;
-  border-radius: 5px;
-  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-  7px 7px 20px 0px rgba(0,0,0,.1),
-  4px 4px 5px 0px rgba(0,0,0,.1);
-  transition: all 0.3s ease;
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
 }
-.btn:hover {
-  color: #fff;
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
 }
-.btn:hover:after {
-  left: 0;
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
   width: 100%;
-}
-.btn:active {
-  top: 2px;
+  opacity: 0.9;
 }
 
-.field {
-  width: auto
-  height: 10rem;
-  padding: 1rem;
+.registerbtn:hover {
+  opacity: 1;
 }
 
-.valid {
-  color: #008000;
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
 }
 
-.invalid {
-  color: #ff0000;
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
 }
