@@ -1,53 +1,69 @@
-function checkPassword(event) {
-    var url = "login.json";
-    fetch(url)
-    .then(response => {
-        if(response.ok){
-            return response.json();
-        } else {
-            throw new Error("Failed to load login.json");
-        }
-    }) 
-        .then(data => {
-            const correctEmail = data.email; 
-            const correctPw = data.password;
-            const email = document.getElementById("email").value; 
-            const password = document.getElementById("password").value;
-    
-            if (email === correctEmail && password === correctPw) {
-                window.location.href="LoginDone.html"
-            }else{
-                alert("Failed Login") 
-            }
-            })
-            .catch(error => {
-                console.log("Error loading login " + error); 
-            });
-    event.preventDefault(); 
+// check password strength
+var password = document.getElementById("password");
+var message = document.getElementById("message");
+password.addEventListener("input", function() {
+  var passwordValue = password.value;
+  if (passwordValue.length < 8) {
+    message.innerHTML = "Weak";
+  } else if (passwordValue.length >= 8 && passwordValue.length < 12) {
+    message.innerHTML = "Could be better";
+  } else {
+    message.innerHTML = "Strong";
+  }
+});
+
+
+
+
+/*
+//login form submit event
+document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault();
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
-    var messageDiv = document.getElementById("message");
-    messageDiv.innerHTML = ""; 
-
-    //email validation
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(!re.test(email)){
-        messageDiv.innerHTML = "Invalid Email";
-        return;
-    }
-
-    //password validation
-    if (password.length < 8) {
-        messageDiv.innerHTML = "Password must be at least 8 characters long.";
-    } else if (email === "") {
-        messageDiv.innerHTML = "Email is required.";
+    var message = document.getElementById("message");
+  
+    var users = JSON.parse(localStorage.getItem("users")) || [];
+    
+    // check if email and password match with a user
+    var user = users.find(function(user) {
+      return user.email === email && user.password === password;
+    });
+  
+    if (user) {
+      message.innerHTML = "Login successful!";
     } else {
-        if(password.length>=8 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!@#\$%\^&\*]/.test(password)){
-            messageDiv.innerHTML = "<span class='strong'>Your Password is Strong</span>";
-        }else if(password.length>=6 && /[A-Z]/.test(password)){
-            messageDiv.innerHTML = "<span class='could-be-better'>Your Password is could be better</span>";
-        }else{
-            messageDiv.innerHTML = "<span class='weak'>Your Password is Weak</span>";
-        }
+      message.innerHTML = "Invalid email or password. Please try again.";
     }
-}
+  });
+  
+  //signup button click event
+  document.getElementById("signup-btn").addEventListener("click", function() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var message = document.getElementById("message");
+    
+    var users = JSON.parse(localStorage.getItem("users")) || [];
+  
+    var existingUser = users.find(function(user) {
+      return user.email === email;
+    });
+  
+    if (existingUser) {
+      message.innerHTML = "User with this email already exists.";
+    } else {
+      users.push({ email: email, password: password });
+      localStorage.setItem("users", JSON.stringify(users));
+      message.innerHTML = "Signup successful! You can now login.";
+    }
+    fetch('users.json')
+    .then(response => response.json())
+    .then(data => {
+      // do something with the data
+    })
+    .catch(error => {
+      console.log('Error:', error);
+    });
+
+  });
+  */

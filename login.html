@@ -1,24 +1,27 @@
-<head>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <title>Login / Sign Up Form</title>
-  <link rel="stylesheet" href="stylesheet.css">
-</head>
-<body>
-<div class="container">
-  <form onsubmit="checkPassword(event)">
-      <p>E-Mail</p>
-      <input type="text" id="email" required>
-      <p>Password</p>
-      <input type="password" id="password" required>
-      <br>
-      <div id="message"></div>
-      <br>
-      <div class="submit">
-          <input type="submit" id="submit" value="Submit">
+<head><link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Login Form</span></div>
+        <form action="#">
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Email or Phone" required>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" required>
+          </div>
+          <div class="pass"><a href="#">Forgot password?</a></div>
+          <div class="row button">
+            <input type="submit" value="Login">
+          </div>
+          <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+        </form>
       </div>
-  </form>
-</div>
-<script src="login.js"></script>
-</body>
+    </div>
+
+  </body>
+</html>
