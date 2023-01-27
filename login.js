@@ -5,19 +5,19 @@ function checkPassword(event) {
         const correctEmail = data.email;
         const correctPw = data.password;
 
-        const email = document.getElementById("email").value; // Das Eingegebene Login wird ausgelesen und als Konstanten definiert
+        const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
         if (email === correctEmail && password === correctPw) {
-          window.location.href="logged_in!.html"//Wenn Email und Passwort aus dem JSON File mit denen aus dem Login übereinstimmen wird man weitergeleitet
+          window.location.href="logged_in!.html"
         }else{
-          alert("Falsches Login") //Eine Fehlermeldung erscheint wenn Das Login nicht übereinstimmt
+          alert("Falsches Login")
         }
       })
       .catch(error => {
-        console.log("Error loading login " + error); // Bei Ladefehlern wird in der Konsole der Errorcode ausgegeben
+        console.log("Error loading login " + error);
       });
-  event.preventDefault(); // Verhindert das abschicken des Formulars
+  event.preventDefault();
 }
 
 $(document).ready(function () {
